@@ -1,2 +1,3 @@
 # elsys_reader
-My preferred way of reading updates on &lt;elsys-bg.org> through an rss feed.
+
+My preferred way of reading updates on [elsys-bg.org](https://elsys-bg.org/) through an rss feed.
