@@ -42,8 +42,6 @@ async function getArticles(url) {
     });
   }
 
-  console.log(articles);
-
   return articles;
 }
 

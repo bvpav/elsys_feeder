@@ -6,6 +6,53 @@ const config = require('./config');
 
 const app = express();
 
+app.get('/', async (req, res) => {
+  res.set('Content-Type', 'text/xml');
+
+  const articles = [];
+
+  const feed = new RSS({
+    title: config.HOME_TITLE,
+    feed_url: req.url,
+    site_url: config.BASE_URL,
+    language: config.FEED_LANG,
+    categories: [
+      config.NEWS_CATEGORY,
+      config.BLOG_CATEGORY,
+      config.EXCURSIONS_CATEGORY,
+      config.INSPO_CATEGORY,
+    ],
+  });
+
+  const paths = [
+    config.BLOG_PATH,
+    config.NEWS_PATH,
+    config.EXCURSIONS_PATH,
+    config.INSPO_PATH,
+  ];
+  for (const path of paths) {
+    const url = `${config.BASE_URL}/${path}/`;
+    const pathArticles = await getArticles(url);
+    articles.push(...pathArticles);
+  }
+
+  articles.sort((a1, a2) => a2.date - a1.date);
+
+  for (article of articles) {
+    feed.item({
+      ...article,
+      categories: [
+        config.NEWS_CATEGORY,
+        config.BLOG_CATEGORY,
+        config.EXCURSIONS_CATEGORY,
+        config.INSPO_CATEGORY,
+      ],
+    });
+  }
+
+  return res.send(feed.xml());
+});
+
 app.get('/news', async (req, res) => {
   res.set('Content-Type', 'text/xml');
 

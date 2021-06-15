@@ -3,6 +3,8 @@ module.exports = {
 
   FEED_LANG: 'bg',
 
+  HOME_TITLE: 'ТУЕС',
+
   NEWS_PATH: 'novini-i-sybitija/novini',
   NEWS_TITLE: 'Новини',
   NEWS_CATEGORY: 'Новини',
