@@ -11,7 +11,7 @@ async function getDOM(url) {
   return new JSDOM(html);
 }
 
-async function getPostContent(url) {
+async function getArticleContent(url) {
   const dom = await getDOM(url);
   const { document } = dom.window;
 
@@ -20,31 +20,34 @@ async function getPostContent(url) {
   return article.innerHTML;
 }
 
-async function getPosts(url) {
-  const posts = [];
+async function getArticles(url) {
+  const articles = [];
+
   const dom = await getDOM(url);
   const { document } = dom.window;
 
-  const newsList = document.querySelectorAll('ul.comments-box.news-view > li');
-  for (const e of newsList) {
+  const articleList = document.querySelectorAll(
+    'ul.comments-box.news-view > li'
+  );
+  for (const e of articleList) {
     const title = e.querySelector('header > h3').textContent;
     const time = e.querySelector('header > time').dateTime;
-    const postUrl = BASE_URL + e.querySelector('a.read-more').href;
+    const articleUrl = BASE_URL + e.querySelector('a.read-more').href;
     const description = e.querySelector('p').textContent;
-    const content = await getPostContent(postUrl);
+    const content = await getArticleContent(articleUrl);
 
-    posts.push({
+    articles.push({
       title,
       time,
-      url: postUrl,
+      url: articleUrl,
       description,
       content,
     });
   }
 
-  console.log(posts);
+  console.log(articles);
 
-  return posts;
+  return articles;
 }
 
-getPosts(`${BASE_URL}/${NEWS_PATH}`);
+getArticles(`${BASE_URL}/${NEWS_PATH}`);
