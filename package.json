@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/bvpav/elsys_reader/issues"
   },
-  "homepage": "https://github.com/bvpav/elsys_reader#readme"
+  "homepage": "https://github.com/bvpav/elsys_reader#readme",
+  "dependencies": {
+    "jsdom": "^16.6.0",
+    "node-fetch": "^2.6.1"
+  }
 }
