@@ -38,7 +38,7 @@ async function getArticles(url) {
 
     articles.push({
       title,
-      time,
+      date: new Date(time),
       url: articleUrl,
       description,
       content,
