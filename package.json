@@ -1,0 +1,22 @@
+{
+  "name": "elsys_reader",
+  "version": "0.1.0",
+  "description": "My preferred way of reading updates on elsys-bg.org through an rss feed.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bvpav/elsys_reader.git"
+  },
+  "keywords": [
+    "rss"
+  ],
+  "author": "bvpav",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/bvpav/elsys_reader/issues"
+  },
+  "homepage": "https://github.com/bvpav/elsys_reader#readme"
+}
