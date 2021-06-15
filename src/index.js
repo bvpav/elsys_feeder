@@ -150,4 +150,4 @@ app.get('/inspiration_talks', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`up @ ${PORT}`));
+app.listen(PORT, () => console.log(`up @ http://localhost:${PORT}`));
