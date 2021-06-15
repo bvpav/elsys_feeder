@@ -1,9 +1,7 @@
 const fetch = require('node-fetch');
 const { JSDOM } = require('jsdom');
 
-// TODO: maybe move somewhere else
-const BASE_URL = 'https://elsys-bg.org';
-const NEWS_PATH = 'novini-i-sybitija/novini';
+const config = require('./config');
 
 async function getDOM(url) {
   const response = await fetch(url);
@@ -32,7 +30,7 @@ async function getArticles(url) {
   for (const e of articleList) {
     const title = e.querySelector('header > h3').textContent;
     const time = e.querySelector('header > time').dateTime;
-    const articleUrl = BASE_URL + e.querySelector('a.read-more').href;
+    const articleUrl = config.BASE_URL + e.querySelector('a.read-more').href;
     const description = e.querySelector('p').textContent;
     const content = await getArticleContent(articleUrl);
 
@@ -50,4 +48,4 @@ async function getArticles(url) {
   return articles;
 }
 
-getArticles(`${BASE_URL}/${NEWS_PATH}`);
+module.exports.getArticles = getArticles;
