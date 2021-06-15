@@ -47,4 +47,4 @@ async function getArticles(url) {
   return articles;
 }
 
-module.exports.getArticles = getArticles;
+module.exports = { getArticles };
