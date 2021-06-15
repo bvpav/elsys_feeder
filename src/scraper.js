@@ -31,15 +31,14 @@ async function getArticles(url) {
     const title = e.querySelector('header > h3').textContent;
     const time = e.querySelector('header > time').dateTime;
     const articleUrl = config.BASE_URL + e.querySelector('a.read-more').href;
-    const description = e.querySelector('p').textContent;
+    // const description = e.querySelector('p').textContent;
     const content = await getArticleContent(articleUrl);
 
     articles.push({
       title,
       date: new Date(time),
       url: articleUrl,
-      description,
-      content,
+      description: content,
     });
   }
 

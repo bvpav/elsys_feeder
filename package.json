@@ -4,7 +4,8 @@
   "description": "My preferred way of reading updates on elsys-bg.org through an rss feed.",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node .",
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,12 @@
   },
   "homepage": "https://github.com/bvpav/elsys_reader#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "jsdom": "^16.6.0",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "rss": "^1.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
