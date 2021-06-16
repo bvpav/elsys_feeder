@@ -1,5 +1,5 @@
 {
-  "name": "elsys_reader",
+  "name": "elsys_feeder",
   "version": "0.1.0",
   "description": "My preferred way of reading updates on elsys-bg.org through an rss feed.",
   "main": "src/index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bvpav/elsys_reader.git"
+    "url": "git+https://github.com/bvpav/elsys_feeder.git"
   },
   "keywords": [
     "rss"
@@ -17,9 +17,9 @@
   "author": "bvpav",
   "license": "AGPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/bvpav/elsys_reader/issues"
+    "url": "https://github.com/bvpav/elsys_feeder/issues"
   },
-  "homepage": "https://github.com/bvpav/elsys_reader#readme",
+  "homepage": "https://github.com/bvpav/elsys_feeder#readme",
   "dependencies": {
     "express": "^4.17.1",
     "jsdom": "^16.6.0",
