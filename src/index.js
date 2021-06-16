@@ -34,6 +34,7 @@ app.get('/', async (req, res) => {
   for (const path of paths) {
     const url = `${config.BASE_URL}/${path}/`;
     const pathArticles = await getArticles(url);
+    // TODO: add the category here somehow
     articles.push(...pathArticles);
   }
 
