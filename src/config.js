@@ -2,6 +2,8 @@ module.exports = {
   BASE_URL: 'https://elsys-bg.org',
 
   FEED_LANG: 'bg',
+  FEED_COPYRIGHT:
+    '2021. Технологично училище Електронни системи към Технически Университет - София',
 
   HOME_TITLE: 'ТУЕС',
 

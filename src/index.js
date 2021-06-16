@@ -16,6 +16,7 @@ app.get('/', async (req, res) => {
     feed_url: req.url,
     site_url: config.BASE_URL,
     language: config.FEED_LANG,
+    copyright: config.FEED_COPYRIGHT,
     categories: [
       config.NEWS_CATEGORY,
       config.BLOG_CATEGORY,
@@ -63,6 +64,7 @@ app.get('/news', async (req, res) => {
     feed_url: req.url,
     site_url: url,
     language: config.FEED_LANG,
+    copyright: config.FEED_COPYRIGHT,
     categories: [config.NEWS_CATEGORY],
   });
 
@@ -87,6 +89,7 @@ app.get('/blog', async (req, res) => {
     feed_url: req.url,
     site_url: url,
     language: config.FEED_LANG,
+    copyright: config.FEED_COPYRIGHT,
     categories: [config.BLOG_CATEGORY],
   });
 
@@ -111,6 +114,7 @@ app.get('/excursions', async (req, res) => {
     feed_url: req.url,
     site_url: url,
     language: config.FEED_LANG,
+    copyright: config.FEED_COPYRIGHT,
     categories: [config.EXCURSIONS_CATEGORY],
   });
 
@@ -135,6 +139,7 @@ app.get('/inspiration_talks', async (req, res) => {
     feed_url: req.url,
     site_url: url,
     language: config.FEED_LANG,
+    copyright: config.FEED_COPYRIGHT,
     categories: [config.INSPO_CATEGORY],
   });
 
