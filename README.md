@@ -4,7 +4,7 @@ My preferred way of reading updates on [elsys-bg.org](https://elsys-bg.org/) thr
 
 The way elsys_feeder works is by scraping content from the website and serving it as the following rss feeds:
 
-| URL                  | URL                                                         |
+| URL                  | Content from                                                |
 | -------------------- | ----------------------------------------------------------- |
 | `/`                  | mixed feed with content from all the feeds.                 |
 | `/news`              | <https://elsys-bg.org/novini-i-sybitija/novini/>            |
