@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/bvpav/elsys_feeder#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jsdom": "^16.6.0",
     "node-fetch": "^2.6.1",
     "rss": "^1.2.2"
