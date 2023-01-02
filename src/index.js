@@ -7,7 +7,7 @@ const config = require('./config');
 const app = express();
 
 app.get('/', async (req, res) => {
-  res.set('Content-Type', 'text/xml');
+  res.set('Content-Type', 'application/rss+xml');
 
   const feed = new RSS({
     title: config.HOME_TITLE,
@@ -60,7 +60,7 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/news', async (req, res) => {
-  res.set('Content-Type', 'text/xml');
+  res.set('Content-Type', 'application/rss+xml');
 
   const url = `${config.BASE_URL}/${config.NEWS_PATH}/`;
 
@@ -85,7 +85,7 @@ app.get('/news', async (req, res) => {
 });
 
 app.get('/blog', async (req, res) => {
-  res.set('Content-Type', 'text/xml');
+  res.set('Content-Type', 'application/rss+xml');
 
   const url = `${config.BASE_URL}/${config.BLOG_PATH}/`;
 
@@ -110,7 +110,7 @@ app.get('/blog', async (req, res) => {
 });
 
 app.get('/excursions', async (req, res) => {
-  res.set('Content-Type', 'text/xml');
+  res.set('Content-Type', 'application/rss+xml');
 
   const url = `${config.BASE_URL}/${config.EXCURSIONS_PATH}/`;
 
@@ -135,7 +135,7 @@ app.get('/excursions', async (req, res) => {
 });
 
 app.get('/inspiration_talks', async (req, res) => {
-  res.set('Content-Type', 'text/xml');
+  res.set('Content-Type', 'application/rss+xml');
 
   const url = `${config.BASE_URL}/${config.INSPO_PATH}/`;
 
