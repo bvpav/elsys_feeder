@@ -1,5 +1,5 @@
 // @deno-types="npm:@types/jsdom"
-import { JSDOM } from 'npm:jsdom';
+import { JSDOM } from 'npm:jsdom@^20.0.3';
 
 import config from './config.ts';
 
