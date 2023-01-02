@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   BASE_URL: 'https://elsys-bg.org',
 
   FEED_LANG: 'bg',
@@ -32,5 +32,5 @@ module.exports = {
       TITLE: 'TUES Inspiration Talks & Workshops',
       CATEGORY: 'Inspiration Talks',
     },
-  ],
-};
+]
+} as const;

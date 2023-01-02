@@ -1,8 +1,9 @@
-const RSS = require('rss');
-const config = require('./config');
-const { getArticles } = require('./scraper');
+// @deno-types="npm:@types/rss"
+import RSS from 'npm:rss';
+import config from './config.ts';
+import { getArticles } from './scraper.ts';
 
-async function createMixedFeed(feedUrl) {
+export async function createMixedFeed(feedUrl: string) {
   const feed = new RSS({
     title: config.HOME_TITLE,
     feed_url: feedUrl,
@@ -26,7 +27,7 @@ async function createMixedFeed(feedUrl) {
     (articles, moreArticles) => [...articles, ...moreArticles],
     []
   );
-  articles.sort((a1, a2) => a2.date - a1.date);
+  articles.sort((a1, a2) => a2.date.getTime() - a1.date.getTime());
 
   articles.forEach((article) => feed.item(article));
 
@@ -35,8 +36,10 @@ async function createMixedFeed(feedUrl) {
 
 const feedConfigs = new Map(config.FEEDS.map((feed) => [feed.SLUG, feed]));
 
-async function createFeed(slug, feedUrl) {
-  const feedConfig = feedConfigs.get(slug);
+type Slug = typeof config.FEEDS[number]['SLUG'];
+
+export async function createFeed(slug: Slug, feedUrl: string) {
+  const feedConfig = feedConfigs.get(slug)!;
   const url = `${config.BASE_URL}/${feedConfig.PATH}/`;
 
   const feed = new RSS({
@@ -57,5 +60,3 @@ async function createFeed(slug, feedUrl) {
 
   return feed;
 }
-
-module.exports = { createFeed, createMixedFeed };

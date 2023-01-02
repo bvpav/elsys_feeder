@@ -1,15 +1,15 @@
-const fetch = require('node-fetch');
-const { JSDOM } = require('jsdom');
+// @deno-types="npm:@types/jsdom"
+import { JSDOM } from 'npm:jsdom';
 
-const config = require('./config');
+import config from './config.ts';
 
-async function getDOM(url) {
+export async function getDOM(url: string) {
   const response = await fetch(url);
   const html = await response.text();
   return new JSDOM(html);
 }
 
-async function getArticleContent(url) {
+export async function getArticleContent(url: string) {
   const dom = await getDOM(url);
   const { document } = dom.window;
 
@@ -18,7 +18,7 @@ async function getArticleContent(url) {
   return article.innerHTML;
 }
 
-async function getArticles(url) {
+export async function getArticles(url: string) {
   const dom = await getDOM(url);
   const { document } = dom.window;
 
@@ -27,9 +27,12 @@ async function getArticles(url) {
   );
   return Promise.all(
     [...articleList].map(async (e) => {
-      const title = e.querySelector('header > h3').textContent;
-      const time = e.querySelector('header > time').dateTime;
-      const articleUrl = config.BASE_URL + e.querySelector('a.read-more').href;
+      // FIXME: add type assertions
+      const title = e.querySelector('header > h3')!.textContent || '';
+      const time = e.querySelector<HTMLTimeElement>('header > time')!.dateTime;
+      const articleUrl =
+        config.BASE_URL +
+        e.querySelector<HTMLAnchorElement>('a.read-more')!.href;
       // const description = e.querySelector('p').textContent;
       const content = await getArticleContent(articleUrl);
 
@@ -42,5 +45,3 @@ async function getArticles(url) {
     })
   );
 }
-
-module.exports = { getArticles };
