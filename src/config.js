@@ -7,19 +7,30 @@ module.exports = {
 
   HOME_TITLE: 'ТУЕС',
 
-  NEWS_PATH: 'novini-i-sybitija/novini',
-  NEWS_TITLE: 'Новини',
-  NEWS_CATEGORY: 'Новини',
-
-  BLOG_PATH: 'blog',
-  BLOG_TITLE: 'Блог',
-  BLOG_CATEGORY: 'Блог',
-
-  EXCURSIONS_PATH: 'uchenicheski-jivot/ekskurzii',
-  EXCURSIONS_TITLE: 'Екскурзии',
-  EXCURSIONS_CATEGORY: 'Екскурзии',
-
-  INSPO_PATH: 'uchenicheski-jivot/inspiration-talks',
-  INSPO_TITLE: 'TUES Inspiration Talks & Workshops',
-  INSPO_CATEGORY: 'Inspiration Talks',
+  FEEDS: [
+    {
+      SLUG: 'news',
+      PATH: 'novini-i-sybitija/novini',
+      TITLE: 'Новини',
+      CATEGORY: 'Новини',
+    },
+    {
+      SLUG: 'blog',
+      PATH: 'blog',
+      TITLE: 'Блог',
+      CATEGORY: 'Блог',
+    },
+    {
+      SLUG: 'excursions',
+      PATH: 'uchenicheski-jivot/ekskurzii',
+      TITLE: 'Екскурзии',
+      CATEGORY: 'Екскурзии',
+    },
+    {
+      SLUG: 'inspiration_talks',
+      PATH: 'uchenicheski-jivot/inspiration-talks',
+      TITLE: 'TUES Inspiration Talks & Workshops',
+      CATEGORY: 'Inspiration Talks',
+    },
+  ],
 };
