@@ -9,8 +9,6 @@ const app = express();
 app.get('/', async (req, res) => {
   res.set('Content-Type', 'text/xml');
 
-  const articles = [];
-
   const feed = new RSS({
     title: config.HOME_TITLE,
     feed_url: req.url,
@@ -31,12 +29,18 @@ app.get('/', async (req, res) => {
     config.EXCURSIONS_PATH,
     config.INSPO_PATH,
   ];
-  for (const path of paths) {
-    const url = `${config.BASE_URL}/${path}/`;
-    const pathArticles = await getArticles(url);
-    // TODO: add the category here somehow
-    articles.push(...pathArticles);
-  }
+  const pathArticles = await Promise.all(
+    paths.map(async (path) => {
+      const url = `${config.BASE_URL}/${path}/`;
+      const pathArticles = await getArticles(url);
+      // TODO: add the category here somehow
+      return pathArticles;
+    })
+  );
+  const articles = pathArticles.reduce((articles, pathArticles) => [
+    ...articles,
+    ...pathArticles,
+  ]);
 
   articles.sort((a1, a2) => a2.date - a1.date);
 

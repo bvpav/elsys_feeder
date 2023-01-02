@@ -19,30 +19,28 @@ async function getArticleContent(url) {
 }
 
 async function getArticles(url) {
-  const articles = [];
-
   const dom = await getDOM(url);
   const { document } = dom.window;
 
   const articleList = document.querySelectorAll(
     'ul.comments-box.news-view > li'
   );
-  for (const e of articleList) {
-    const title = e.querySelector('header > h3').textContent;
-    const time = e.querySelector('header > time').dateTime;
-    const articleUrl = config.BASE_URL + e.querySelector('a.read-more').href;
-    // const description = e.querySelector('p').textContent;
-    const content = await getArticleContent(articleUrl);
+  return Promise.all(
+    [...articleList].map(async (e) => {
+      const title = e.querySelector('header > h3').textContent;
+      const time = e.querySelector('header > time').dateTime;
+      const articleUrl = config.BASE_URL + e.querySelector('a.read-more').href;
+      // const description = e.querySelector('p').textContent;
+      const content = await getArticleContent(articleUrl);
 
-    articles.push({
-      title,
-      date: new Date(time),
-      url: articleUrl,
-      description: content,
-    });
-  }
-
-  return articles;
+      return {
+        title,
+        date: new Date(time),
+        url: articleUrl,
+        description: content,
+      };
+    })
+  );
 }
 
 module.exports = { getArticles };
