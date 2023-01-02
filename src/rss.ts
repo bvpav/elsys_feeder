@@ -1,5 +1,5 @@
 // @deno-types="npm:@types/rss"
-import RSS from 'npm:rss';
+import RSS from 'https://esm.sh/rss@1.2.2';
 import config from './config.ts';
 import { getArticles } from './scraper.ts';
 
