@@ -3,13 +3,13 @@ import { JSDOM } from 'npm:jsdom@^20.0.3';
 
 import config from './config.ts';
 
-export async function getDOM(url: string) {
+async function getDOM(url: string) {
   const response = await fetch(url);
   const html = await response.text();
   return new JSDOM(html);
 }
 
-export async function getArticleContent(url: string) {
+async function getArticleContent(url: string) {
   const dom = await getDOM(url);
   const { document } = dom.window;
 
