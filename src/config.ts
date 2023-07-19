@@ -32,5 +32,5 @@ export default {
       TITLE: 'TUES Inspiration Talks & Workshops',
       CATEGORY: 'Inspiration Talks',
     },
-]
+  ],
 } as const;

@@ -1,10 +1,9 @@
-import { serve } from 'https://deno.land/std@0.170.0/http/server.ts';
-import { Router } from 'https://deno.land/x/tinyrouter@1.1.0/mod.ts';
+import { Router } from 'itty-router';
 
-import config from './config.ts';
-import { createMixedFeed, createFeed } from './rss.ts';
+import config from './config';
+import { createMixedFeed, createFeed } from './rss';
 
-const router = new Router();
+const router = Router();
 
 router.get('/', async (req) => {
   const feed = await createMixedFeed(req.url);
@@ -26,5 +25,10 @@ for (const feedConfig of config.FEEDS) {
   });
 }
 
-const PORT = Deno.env.get('PORT') || '5000';
-serve((req) => router.handler(req), { port: Number(PORT) });
+router.all('*', () => Response.redirect(config.BASE_URL, 301));
+
+export default {
+  async fetch(req: Request) {
+    return router.handle(req);
+  },
+};

@@ -1,7 +1,6 @@
-// @deno-types="npm:@types/rss"
-import RSS from 'npm:rss';
-import config from './config.ts';
-import { getArticles } from './scraper.ts';
+import RSS from 'rss';
+import config from './config';
+import { getArticles } from './scraper';
 
 export async function createMixedFeed(feedUrl: string) {
   const feed = new RSS({
@@ -36,7 +35,7 @@ export async function createMixedFeed(feedUrl: string) {
 
 const feedConfigs = new Map(config.FEEDS.map((feed) => [feed.SLUG, feed]));
 
-type Slug = typeof config.FEEDS[number]['SLUG'];
+type Slug = (typeof config.FEEDS)[number]['SLUG'];
 
 export async function createFeed(slug: Slug, feedUrl: string) {
   const feedConfig = feedConfigs.get(slug)!;
