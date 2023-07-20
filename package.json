@@ -4,7 +4,7 @@
   "description": "My preferred way of reading updates on elsys-bg.org through an rss feed.",
   "scripts": {
     "deploy": "wrangler deploy",
-    "start": "wrangler dev"
+    "dev": "wrangler dev"
   },
   "repository": {
     "type": "git",
